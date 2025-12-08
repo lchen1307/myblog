@@ -1,0 +1,39 @@
+name: Deploy Hexo site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master   # 主分支名，根据你的情况可能是 main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install hexo-cli
+          npm install
+          npm install hexo-deployer-git --save
+
+      - name: Generate static site
+        run: npx hexo generate
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v6
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
