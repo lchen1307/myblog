@@ -1,3 +1,14 @@
+# Site
+title: Long Chen
+subtitle: Optimization · IEOR · Integer Programming
+author: Long Chen
+language: en
+timezone: Asia/Shanghai
+
+# URL
+url: https://lchen1307.github.io
+root: /myblog/
+
 # ===============================================================
 # It's recommended to use Alternate Theme Config to configure NexT
 # Modifying this file may result in merge conflict
